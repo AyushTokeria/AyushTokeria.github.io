@@ -102,6 +102,9 @@ a { color: var(--accent); }
 .card .result { font: 500 13px var(--f-mono); color: var(--accent); }
 .card .strong { font-weight: 600; }
 
+.logo { align-self: flex-start; display: flex; align-items: center; justify-content: center; height: 76px; max-width: 100%; padding: 10px 16px; margin-bottom: 4px; background: #FFFFFF; border: 1px solid var(--line); border-radius: 8px; }
+.logo img { display: block; height: auto; width: auto; max-height: 54px; max-width: min(210px, 100%); object-fit: contain; }
+
 /* project cards: a card lifts above its neighbours and flips to its details */
 .pslot { position: relative; display: flex; min-width: 0; transition: z-index 0s 0.36s; }
 .pslot.open { z-index: 30; transition-delay: 0s; }

@@ -1,3 +1,7 @@
+import polimiLogo from './assets/logos/polimi.png';
+import michiganLogo from './assets/logos/michigan.png';
+import merchantTaylorsLogo from './assets/logos/merchant-taylors.png';
+
 // Edit this file to change what the site says. Everything else is layout.
 
 export const profile = {
@@ -28,7 +32,7 @@ export interface Project {
 export interface Skill { label: string; items: string[]; evidence?: string }
 export interface Achievement { label: string; text: string; when?: string }
 export interface Lead { org: string; role: string; text: string; when?: string }
-export interface Education { school: string; what: string; when?: string; detail?: string }
+export interface Education { school: string; what: string; when?: string; detail?: string; logo?: string }
 export interface Beyond { title: string; text: string }
 
 // Add a `when` (for example "Jun – Sep 2024") to any job to show its dates.
@@ -228,10 +232,10 @@ export const leadership: Lead[] = [
 ];
 
 export const education: Education[] = [
-  { school: "Politecnico di Milano", what: "MSc Mathematical Engineering, Quantitative Finance track", when: "From February 2027", detail: "Bovisa campus, Milan." },
-  { school: "University of Michigan", what: "B.S.E. Aerospace Engineering, Cum Laude", when: "Aug 2022 – Dec 2025", detail: "Extra coursework: Financial Mathematics, Mathematical Finance, Probability." },
+  { school: "Politecnico di Milano", logo: polimiLogo, what: "MSc Mathematical Engineering, Quantitative Finance track", when: "From February 2027", detail: "Bovisa campus, Milan." },
+  { school: "University of Michigan", logo: michiganLogo, what: "B.S.E. Aerospace Engineering, Cum Laude", when: "Aug 2022 – Dec 2025", detail: "Coursework: Mathematical Finance, CFD, Guidance Navigation & Controls, Propulsion, Aerodynamics." },
   { school: "CFA Institute", what: "CFA Level I candidate" },
-  { school: "Merchant Taylors' School, Northwood", what: "A-Levels", when: "Sep 2015 – Aug 2022", detail: "Mathematics A*, Design & Technology A*, Further Mathematics A, Physics A." },
+  { school: "Merchant Taylors' School, Northwood", logo: merchantTaylorsLogo, what: "A-Levels", when: "Sep 2015 – Aug 2022", detail: "Mathematics A*, Design & Technology A*, Further Mathematics A, Physics A." },
 ];
 
 export const beyond: Beyond[] = [

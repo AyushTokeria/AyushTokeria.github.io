@@ -52,7 +52,7 @@ mount('projects-grid', projects.map(projectHtml).join(''));
 mount('skills-list', skills.map((s) => `<div class="skill"><h3>${esc(s.label)}</h3><div>${chips(s.items)}${s.evidence ? `<p>${esc(s.evidence)}</p>` : ''}</div></div>`).join(''));
 mount('achievements-list', achievements.map((a) => `<div class="row"><p class="label">${esc(a.label)}</p><div><p>${esc(a.text)}</p></div>${when(a.when, 'span') || '<span></span>'}</div>`).join(''));
 mount('leadership-list', leadership.map((l) => `<div class="row"><p class="label">${esc(l.org)}</p><div><p><strong>${esc(l.role)}</strong></p><p>${esc(l.text)}</p></div>${when(l.when, 'span') || '<span></span>'}</div>`).join(''));
-mount('education-grid', education.map((e) => `<article class="card"><h3>${esc(e.school)}</h3><p class="strong">${esc(e.what)}</p>${when(e.when)}${e.detail ? `<p>${esc(e.detail)}</p>` : ''}</article>`).join(''));
+mount('education-grid', education.map((e) => `<article class="card">${e.logo ? `<div class="logo"><img src="${esc(e.logo)}" alt="" decoding="async"></div>` : ''}<h3>${esc(e.school)}</h3><p class="strong">${esc(e.what)}</p>${when(e.when)}${e.detail ? `<p>${esc(e.detail)}</p>` : ''}</article>`).join(''));
 mount('beyond-grid', beyond.map((b) => `<article class="card"><h3>${esc(b.title)}</h3><p>${esc(b.text)}</p></article>`).join(''));
 
 mount('n-jobs', `${jobs.length} roles`);
