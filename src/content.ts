@@ -18,7 +18,13 @@ export const profile = {
 export interface Stat { value: string; label: string }
 export interface Bullet { text: string; metric?: string }
 export interface Job { org: string; role: string; place: string; when?: string; note?: string; stats?: Stat[]; bullets: Bullet[]; tags: string[] }
-export interface Project { kind: string; when?: string; name: string; text: string; result?: string; stack: string[]; href?: string }
+export interface Link { label: string; href: string }
+export interface Project {
+  kind: string; when?: string; name: string; text: string; result?: string; stack: string[];
+  detail?: string;   // one or two sentences shown on the back of the card
+  points?: string[]; // short facts shown on the back
+  links?: Link[];    // GitHub repo, documentation, files: shown as buttons on the back
+}
 export interface Skill { label: string; items: string[]; evidence?: string }
 export interface Achievement { label: string; text: string; when?: string }
 export interface Lead { org: string; role: string; text: string; when?: string }
@@ -90,6 +96,15 @@ export const projects: Project[] = [
     text: "Compared Linear Regression, Ridge and Random Forest across the Ames, California and combined datasets (22,100 samples), with hyperparameter tuning and feature engineering across about 80 variables. A log transform cut target skewness from 1.88 to 0.12.",
     result: "R² 0.906 on Ames",
     stack: ["Python", "scikit-learn", "pandas"],
+    detail: "A comparison of three model families on two public housing datasets and a combined set, built to show how the data itself decides which model works best.",
+    points: [
+      "Datasets: Ames Housing, California Housing and a combined set, 22,100 samples in total",
+      "Models: Linear Regression, Ridge and Random Forest, each with hyperparameter tuning",
+      "Target skewness corrected with a log transform, from 1.88 to 0.12",
+      "Features engineered across about 80 variables",
+      "Best result: R² of 0.906 on the Ames data",
+    ],
+    // links: [{ label: "GitHub repo", href: "https://github.com/AyushTokeria/..." }],
   },
   {
     kind: "Independent quant project",
@@ -97,12 +112,23 @@ export const projects: Project[] = [
     text: "A systematic strategy built on QuantConnect and back-tested on FAANG equities with strong PnL, plus a statistical-arbitrage strategy running live through Alpaca's API.",
     result: "Live on Alpaca",
     stack: ["QuantConnect", "Alpaca API", "Back-testing"],
+    detail: "Two strategies built end to end: one researched and back-tested, one running live.",
+    points: [
+      "Systematic strategy built and back-tested on QuantConnect, on FAANG equities, with strong PnL",
+      "Statistical-arbitrage strategy running live through Alpaca's API",
+    ],
   },
   {
     kind: "Independent quant project",
     name: "Turbulence Analogues for Volatility Regimes",
     text: "Applying ideas from fluid turbulence to identify and describe market volatility regimes.",
     stack: ["Python", "Quant"],
+    detail: "A write-up that uses turbulence as an analogy for how markets move between calm and volatile regimes, scoped as a portfolio piece.",
+    points: [
+      "Stochastic differential equations and hidden Markov models",
+      "Run on S&P 500 data",
+      "Draws on my CFD and turbulence background",
+    ],
   },
   {
     kind: "University team project",
@@ -110,6 +136,14 @@ export const projects: Project[] = [
     text: "Managed the satellite from design through launch. Ran thermal tests, structural drop tests and two-way data tests between satellite and ground, and tested Hamming-code error correction on data corrupted by simulated radiation.",
     result: "100% of two-bit errors detected",
     stack: ["Systems integration", "Test and validation"],
+    detail: "A university CubeSat taken from design to launch, with testing across structures, thermal behaviour and data handling.",
+    points: [
+      "Managed the project from design through launch",
+      "Thermal tests on the onboard components",
+      "Structural drop tests on the chassis",
+      "Software tests: data pings and two-way data between satellite and ground",
+      "Hamming-code error correction detected every two-bit error in testing",
+    ],
   },
   {
     kind: "Competition",
@@ -117,6 +151,13 @@ export const projects: Project[] = [
     text: "Project lead and pilot. The team designed, built and flew a hovercraft against 11 other teams.",
     result: "1st of 12 teams",
     stack: ["Design", "Leadership"],
+    detail: "A design-build-fly competition: the team designed, built and flew the hovercraft against 11 other teams.",
+    points: [
+      "Project lead and pilot",
+      "200% faster than the average entry",
+      "150% more payload than the average entry",
+      "1st place of 12 teams",
+    ],
   },
   {
     kind: "Coursework and personal",
@@ -124,28 +165,12 @@ export const projects: Project[] = [
     text: "Simulated missile flight paths and designed intercept trajectories using equations of motion, control-system modelling and iterative numerical methods. Also built a planetary orbit simulator using gravitational dynamics and numerical integration.",
     result: "MATLAB",
     stack: ["Numerical methods", "Control", "Orbital mechanics"],
-  },
-  {
-    kind: "Personal tool",
-    name: "ColdEmails",
-    text: "A free personal cold-email tool for recruiting: contact matching, drafting, scheduled Gmail sending and a reply pipeline.",
-    result: "Open source on GitHub",
-    stack: ["TypeScript", "React", "Cloudflare Workers"],
-    href: "https://github.com/AyushTokeria/ColdEmail",
-  },
-  {
-    kind: "Personal project",
-    name: "Fit Check",
-    text: "An iOS app built in Xcode and Swift.",
-    stack: ["Swift", "iOS"],
-  },
-  {
-    kind: "Personal tools",
-    when: "2026",
-    name: "Financial modelling tools",
-    text: "An interactive 10-year salary and investment projection model, and a study tracker built to prepare for CFA Level I.",
-    result: "Chart.js",
-    stack: ["JavaScript", "Financial modelling"],
+    detail: "Two MATLAB simulations: a missile intercept from aerospace coursework, and a planetary orbit simulator built on my own.",
+    points: [
+      "Missile flight paths simulated and intercept trajectories designed",
+      "Equations of motion, control-system modelling and iterative numerical methods",
+      "Orbit simulator using gravitational dynamics and numerical integration",
+    ],
   },
 ];
 

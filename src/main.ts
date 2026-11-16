@@ -27,12 +27,23 @@ function jobHtml(j: Job): string {
   </article>`;
 }
 
+let projectCount = 0;
 function projectHtml(p: Project): string {
-  const inner = `<p class="kind"><span>${esc(p.kind)}</span>${when(p.when, 'span')}</p>
-    <h3>${esc(p.name)}</h3><p>${esc(p.text)}</p>${p.result ? `<p class="result">${esc(p.result)}</p>` : ''}${chips(p.stack)}`;
-  return p.href
-    ? `<a class="card" href="${esc(p.href)}" target="_blank" rel="noopener noreferrer">${inner}</a>`
-    : `<article class="card">${inner}</article>`;
+  const id = `project-${projectCount++}`;
+  const kind = `<p class="kind"><span>${esc(p.kind)}</span>${when(p.when, 'span')}</p>`;
+  const front = `<div class="card pfront" role="button" tabindex="0" aria-expanded="false" aria-controls="${id}">
+    ${kind}<h3>${esc(p.name)}</h3><p>${esc(p.text)}</p>
+    <div class="pbottom">${p.result ? `<p class="result">${esc(p.result)}</p>` : ''}${chips(p.stack)}<span class="more" aria-hidden="true"><span class="m-hover">Hover for details</span><span class="m-tap">Tap for details</span></span></div>
+  </div>`;
+  const points = p.points?.length ? `<ul class="points">${p.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
+  const links = p.links?.length
+    ? `<div class="plinks">${p.links.map((l) => `<a href="${esc(l.href)}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>`).join('')}</div>`
+    : '';
+  const back = `<div class="ppop" id="${id}" role="group" aria-label="${esc(p.name)}, details" tabindex="-1">
+    <div class="phead">${kind}<button type="button" class="pclose" aria-label="Close details">×</button></div>
+    <h3>${esc(p.name)}</h3><p>${esc(p.detail ?? p.text)}</p>${points}${chips(p.stack)}${links}
+  </div>`;
+  return `<article class="pslot">${front}${back}</article>`;
 }
 
 mount('facts', profile.facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.text)}</dd></div>`).join(''));
@@ -53,3 +64,84 @@ const links = [
   profile.github ? `<a href="${esc(profile.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : '',
 ].filter(Boolean);
 mount('footer-links', links.join(''));
+
+// Project cards: hover with a mouse, or tap / press Enter, to flip a card over the others.
+interface CardState { hover: boolean; pinned: boolean; timer?: number }
+const slots = Array.from(document.querySelectorAll<HTMLElement>('.pslot'));
+const states = new Map<HTMLElement, CardState>();
+
+function refresh(slot: HTMLElement) {
+  const st = states.get(slot);
+  if (!st) return;
+  const open = st.hover || st.pinned;
+  slot.classList.toggle('open', open);
+  slot.querySelector('.pfront')?.setAttribute('aria-expanded', String(open));
+}
+function closeOthers(keep: HTMLElement) {
+  for (const s of slots) {
+    if (s === keep) continue;
+    const st = states.get(s);
+    if (!st) continue;
+    window.clearTimeout(st.timer);
+    st.hover = false;
+    st.pinned = false;
+    refresh(s);
+  }
+}
+
+for (const slot of slots) {
+  const st: CardState = { hover: false, pinned: false };
+  states.set(slot, st);
+  const front = slot.querySelector<HTMLElement>('.pfront');
+  const pop = slot.querySelector<HTMLElement>('.ppop');
+  if (!front || !pop) continue;
+
+  slot.addEventListener('pointerenter', (e) => {
+    if (e.pointerType === 'touch') return;
+    window.clearTimeout(st.timer);
+    st.timer = window.setTimeout(() => { st.hover = true; closeOthers(slot); refresh(slot); }, 90);
+  });
+  slot.addEventListener('pointerleave', (e) => {
+    if (e.pointerType === 'touch') return;
+    window.clearTimeout(st.timer);
+    st.timer = window.setTimeout(() => { st.hover = false; refresh(slot); }, 140);
+  });
+  front.addEventListener('click', () => {
+    st.pinned = true;
+    closeOthers(slot);
+    refresh(slot);
+    pop.focus({ preventScroll: true });
+  });
+  front.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); front.click(); }
+  });
+  slot.querySelector('.pclose')?.addEventListener('click', () => {
+    st.hover = false;
+    st.pinned = false;
+    refresh(slot);
+    front.focus({ preventScroll: true });
+  });
+  slot.addEventListener('focusout', (e) => {
+    const next = e.relatedTarget as Node | null;
+    if (next && !slot.contains(next)) { st.pinned = false; refresh(slot); }
+  });
+}
+document.addEventListener('click', (e) => {
+  const target = e.target as Node;
+  for (const slot of slots) {
+    const st = states.get(slot);
+    if (st && !slot.contains(target)) { st.pinned = false; refresh(slot); }
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  for (const slot of slots) {
+    const st = states.get(slot);
+    if (!st || !slot.classList.contains('open')) continue;
+    const hadFocus = slot.contains(document.activeElement);
+    st.hover = false;
+    st.pinned = false;
+    refresh(slot);
+    if (hadFocus) slot.querySelector<HTMLElement>('.pfront')?.focus({ preventScroll: true });
+  }
+});
