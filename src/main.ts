@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  profile, metrics, jobs, projects, skills, achievements, leadership, education, beyond,
+  profile, jobs, projects, skills, achievements, leadership, education, beyond,
   type Job, type Project,
 } from './content';
 
@@ -15,12 +15,15 @@ function mount(id: string, html: string) {
 }
 
 function jobHtml(j: Job): string {
+  const stats = j.stats
+    ? `<div class="stats">${j.stats.map((s) => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join('')}</div>`
+    : '';
   const bullets = j.bullets
     .map((b) => `<li><p>${esc(b.text)}</p>${b.metric ? `<span class="metric">${esc(b.metric)}</span>` : ''}</li>`)
     .join('');
   return `<article class="job">
     <header class="meta"><h3>${esc(j.org)}</h3><p class="role">${esc(j.role)}</p><p class="place">${esc(j.place)}</p>${when(j.when)}</header>
-    <div class="body">${j.note ? `<p class="note">${esc(j.note)}</p>` : ''}<ul class="bullets">${bullets}</ul>${chips(j.tags)}</div>
+    <div class="body">${j.note ? `<p class="note">${esc(j.note)}</p>` : ''}${stats}<ul class="bullets">${bullets}</ul>${chips(j.tags)}</div>
   </article>`;
 }
 
@@ -33,7 +36,6 @@ function projectHtml(p: Project): string {
 }
 
 mount('facts', profile.facts.map((f) => `<div><dt>${esc(f.label)}</dt><dd>${esc(f.text)}</dd></div>`).join(''));
-mount('metrics', metrics.map((m) => `<div class="metric-cell"><b>${esc(m.value)}</b><span>${esc(m.caption)}</span><small>${esc(m.source)}</small></div>`).join(''));
 mount('jobs', jobs.map(jobHtml).join(''));
 mount('projects-grid', projects.map(projectHtml).join(''));
 mount('skills-list', skills.map((s) => `<div class="skill"><h3>${esc(s.label)}</h3><div>${chips(s.items)}${s.evidence ? `<p>${esc(s.evidence)}</p>` : ''}</div></div>`).join(''));

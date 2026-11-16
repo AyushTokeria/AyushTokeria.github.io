@@ -54,12 +54,6 @@ a { color: var(--accent); }
 .block div { background: var(--surface); padding: 12px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .block dt { font: 500 11px var(--f-mono); text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); }
 .block dd { margin: 0; font-size: 15px; line-height: 1.4; overflow-wrap: anywhere; }
-.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
-@media (max-width: 640px) { .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.metric-cell { background: var(--surface); padding: 16px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.metric-cell b { font: 600 clamp(24px, 3vw, 32px) / 1.05 var(--f-display); color: var(--accent); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.metric-cell span { font-size: 14px; line-height: 1.4; }
-.metric-cell small { font: 500 11px var(--f-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: auto; }
 
 /* sections */
 .sec { padding-top: 64px; }
@@ -80,6 +74,10 @@ a { color: var(--accent); }
 .job .when { margin-top: 4px; white-space: normal; }
 .job .body { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .note { font-size: 14.5px; color: var(--muted); border-left: 2px solid var(--line); padding-left: 12px; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px; }
+.stat { flex: 1 1 150px; background: var(--surface); border: 1px solid var(--line); padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.stat b { font: 600 clamp(24px, 3vw, 30px) / 1.05 var(--f-display); color: var(--accent); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13.5px; line-height: 1.4; color: var(--muted); }
 .bullets { display: flex; flex-direction: column; gap: 14px; }
 .bullets li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 18px; align-items: start; }
 .metric { font: 500 12px/1.2 var(--f-mono); background: var(--accent-soft); color: var(--accent); padding: 5px 8px; border-radius: 4px; white-space: nowrap; }

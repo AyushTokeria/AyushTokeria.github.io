@@ -15,9 +15,9 @@ export const profile = {
   ],
 };
 
-export interface Metric { value: string; caption: string; source: string }
+export interface Stat { value: string; label: string }
 export interface Bullet { text: string; metric?: string }
-export interface Job { org: string; role: string; place: string; when?: string; note?: string; bullets: Bullet[]; tags: string[] }
+export interface Job { org: string; role: string; place: string; when?: string; note?: string; stats?: Stat[]; bullets: Bullet[]; tags: string[] }
 export interface Project { kind: string; when?: string; name: string; text: string; result?: string; stack: string[]; href?: string }
 export interface Skill { label: string; items: string[]; evidence?: string }
 export interface Achievement { label: string; text: string; when?: string }
@@ -25,25 +25,21 @@ export interface Lead { org: string; role: string; text: string; when?: string }
 export interface Education { school: string; what: string; when?: string; detail?: string }
 export interface Beyond { title: string; text: string }
 
-export const metrics: Metric[] = [
-  { value: "28.6%", caption: "less computation time from a custom C++ solver and data pipeline", source: "IdeaForge" },
-  { value: "25 × 5,000", caption: "drone models × Monte Carlo iterations per model", source: "IdeaForge" },
-  { value: "15%", caption: "improvement in flight endurance", source: "IdeaForge" },
-  { value: "2", caption: "peer-reviewed IAC papers, 2023 and 2024", source: "Conex Research" },
-  { value: "0.906", caption: "R² on Ames house prices, in a 22,100-sample study", source: "HouseIQ" },
-  { value: "1st of 12", caption: "teams in the Hovercraft Design-Build-Fly competition", source: "Hovercraft" },
-];
-
 // Add a `when` (for example "Jun – Sep 2024") to any job to show its dates.
 export const jobs: Job[] = [
   {
     org: "IdeaForge",
     role: "CFD Engineering Intern",
     place: "Austin, Texas",
+    stats: [
+      { value: "28.6%", label: "less computation time from a custom C++ solver and data pipeline" },
+      { value: "25 × 5,000", label: "drone models × Monte Carlo iterations per model" },
+      { value: "15%", label: "improvement in flight endurance" },
+    ],
     bullets: [
       { text: "Built a custom C++ OpenFOAM solver and validated it against established solvers before using it for design studies." },
-      { text: "Ran Monte Carlo aerodynamic optimisation across 25 drone models, 5,000 iterations each, to maximise lift-to-drag ratio and endurance.", metric: "15% more endurance" },
-      { text: "Built a data pipeline that processes 100+ CFD results for fast cross-scenario comparison. With the solver, it cut computation time and sped up decision support by about 30%.", metric: "28.6% less computation" },
+      { text: "Ran Monte Carlo aerodynamic optimisation across 25 drone models, 5,000 iterations each, to maximise lift-to-drag ratio and endurance." },
+      { text: "Built a data pipeline that processes 100+ CFD results for fast cross-scenario comparison. With the solver, it cut computation time and sped up decision support by about 30%." },
     ],
     tags: ["C++", "OpenFOAM", "STAR CCM+", "ANSYS Fluent", "Python", "Monte Carlo"],
   },
@@ -64,10 +60,14 @@ export const jobs: Job[] = [
     org: "Conex Research",
     role: "Lead Systems / Design Engineer",
     place: "Remote, London",
+    stats: [
+      { value: "2", label: "peer-reviewed IAC papers, 2023 and 2024" },
+      { value: "65%", label: "more glide distance from the atmosphere model" },
+    ],
     bullets: [
       { text: "Processed Cassini-Huygens flight and atmospheric data to model Titan's atmosphere for the Mayfly aircraft concept." },
-      { text: "Modelled the atmosphere in STAR CCM+ to improve entry performance.", metric: "65% more glide distance" },
-      { text: "Co-authored two peer-reviewed International Astronautical Congress papers (IAC 2023 and IAC 2024).", metric: "2 publications" },
+      { text: "Modelled the atmosphere in STAR CCM+ to improve entry performance." },
+      { text: "Co-authored two peer-reviewed International Astronautical Congress papers (IAC 2023 and IAC 2024)." },
     ],
     tags: ["STAR CCM+", "CFD", "Data analysis"],
   },
