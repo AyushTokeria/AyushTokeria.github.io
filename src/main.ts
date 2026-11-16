@@ -59,11 +59,11 @@ mount('n-jobs', `${jobs.length} roles`);
 mount('n-projects', `${projects.length} projects`);
 
 const links = [
-  profile.email ? `<a class="addr" href="mailto:${esc(profile.email)}">${esc(profile.email)}</a>` : '',
+  profile.email ? `<a href="mailto:${esc(profile.email)}" title="${esc(profile.email)}">Email</a>` : '',
   profile.linkedin ? `<a href="${esc(profile.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : '',
   profile.github ? `<a href="${esc(profile.github)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : '',
 ].filter(Boolean);
-mount('footer-links', links.join(''));
+mount('header-links', links.join(''));
 
 // Project cards: hover with a mouse, or tap / press Enter, to flip a card over the others.
 interface CardState { hover: boolean; pinned: boolean; timer?: number }
