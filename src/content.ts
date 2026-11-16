@@ -229,7 +229,7 @@ export const leadership: Lead[] = [
 
 export const education: Education[] = [
   { school: "Politecnico di Milano", what: "MSc Mathematical Engineering, Quantitative Finance track", when: "From February 2027", detail: "Bovisa campus, Milan." },
-  { school: "University of Michigan", what: "B.S.E. Aerospace Engineering, Cum Laude", when: "Aug 2022 – Dec 2025", detail: "Coursework: Mathematical Finance, CFD, Guidance Navigation & Controls, Propulsion, Aerodynamics." },
+  { school: "University of Michigan", what: "B.S.E. Aerospace Engineering, Cum Laude", when: "Aug 2022 – Dec 2025", detail: "Extra coursework: Financial Mathematics, Mathematical Finance, Probability." },
   { school: "CFA Institute", what: "CFA Level I candidate" },
   { school: "Merchant Taylors' School, Northwood", what: "A-Levels", when: "Sep 2015 – Aug 2022", detail: "Mathematics A*, Design & Technology A*, Further Mathematics A, Physics A." },
 ];
