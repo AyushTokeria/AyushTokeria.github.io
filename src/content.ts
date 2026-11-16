@@ -3,7 +3,7 @@
 export const profile = {
   name: "Ayush Tokeria",
   location: "London",
-  email: "ayushtokeria@gmail.com",
+  email: "ayushtokeria19@gmail.com",
   github: "https://github.com/AyushTokeria",
   // Paste your LinkedIn URL here and it appears in the footer.
   linkedin: "",
