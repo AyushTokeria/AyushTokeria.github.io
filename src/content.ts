@@ -172,51 +172,6 @@ export const projects: Project[] = [
       "Orbit simulator using gravitational dynamics and numerical integration",
     ],
   },
-  {
-    kind: "Personal tool",
-    name: "ColdEmails",
-    text: "A free personal cold-email tool for recruiting: contact matching, drafting, scheduled Gmail sending and a reply pipeline.",
-    result: "Open source on GitHub",
-    stack: ["TypeScript", "React", "Cloudflare Workers"],
-    detail: "A recruiting tool that finds what I share with each contact, helps draft a short email that opens with the best connection, and tracks replies. It costs nothing to run.",
-    points: [
-      "Matches shared school, employer, hometown and language, and shows the evidence",
-      "Every draft is reviewed by hand, then sent from my own Gmail at random times in the hours I choose",
-      "Follow-ups are drafted in the same thread and replies are tracked in a pipeline",
-      "React app on GitHub Pages, API and scheduler on Cloudflare Workers",
-    ],
-    links: [
-      { label: "GitHub repo", href: "https://github.com/AyushTokeria/ColdEmail" },
-      { label: "README", href: "https://github.com/AyushTokeria/ColdEmail#readme" },
-    ],
-  },
-  {
-    kind: "Personal project",
-    name: "Fit Check",
-    text: "An iOS app built in Xcode and Swift.",
-    stack: ["Swift", "iOS"],
-    detail: "A wardrobe app in development: an avatar sized to your measurements, clothes added by photo, and an outfit builder.",
-    points: [
-      "Native iOS app in Swift and Xcode",
-      "Avatar sized to the user's measurements",
-      "Clothes added by photo and brand, tagged by season, fabric and formality",
-      "Outfit builder",
-    ],
-  },
-  {
-    kind: "Personal tools",
-    when: "2026",
-    name: "Financial modelling tools",
-    text: "An interactive 10-year salary and investment projection model, and a study tracker built to prepare for CFA Level I.",
-    result: "Chart.js",
-    stack: ["JavaScript", "Financial modelling"],
-    detail: "Two small interactive tools built for my own planning and exam preparation.",
-    points: [
-      "10-year salary and investment projection with an investment growth layer, charted with Chart.js",
-      "CFA Level I study tracker with a dashboard, topic progress, a study schedule and stats",
-      "Tracks daily study hours against a goal, with streaks and a 14-day history chart",
-    ],
-  },
 ];
 
 export const skills: Skill[] = [
