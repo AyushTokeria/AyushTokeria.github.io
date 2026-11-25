@@ -211,9 +211,9 @@ export const skills: Skill[] = [
 ];
 
 export const achievements: Achievement[] = [
-  { label: "Academic", text: "Accepted to the MSc in Mathematical Engineering (Quantitative Finance track) at Politecnico di Milano." },
   { label: "Competition", text: "Gold in the British Mathematical Olympiad, awarded twice." },
   { label: "Academic", text: "Cum Laude, B.S.E. Aerospace Engineering, University of Michigan.", when: "2025" },
+  { label: "Academic", text: "Accepted to the MSc in Mathematical Engineering (Quantitative Finance track) at Politecnico di Milano." },
   { label: "Academic", text: "A-Levels: Mathematics A*, Design & Technology A*, Further Mathematics A, Physics A.", when: "2022" },
   { label: "Competition", text: "Gold in the UK Mathematics Kangaroo." },
   { label: "Competition", text: "Silver in the British Physics Olympiad.", when: "2022" },
