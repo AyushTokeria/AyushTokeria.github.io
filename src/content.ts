@@ -195,11 +195,6 @@ export const skills: Skill[] = [
     evidence: "Custom solver development and validation at IdeaForge, atmosphere modelling at Conex Research, thermal and drop testing on the CubeSat.",
   },
   {
-    label: "CAD and design",
-    items: ["NX", "SolidWorks", "CATIA", "Fusion 360", "Creo", "Inventor", "AutoCAD", "Blender"],
-    evidence: "Nozzle design and CAD education on the MJet student team, rover design iteration, procedural 3D modelling in Blender.",
-  },
-  {
     label: "Finance",
     items: ["Mathematical finance", "Derivatives and risk", "CFA Level I candidate"],
     evidence: "Mathematical Finance coursework at Michigan, trading-floor exposure at J.P. Morgan, quantitative finance at Politecnico di Milano from 2027.",
@@ -208,16 +203,24 @@ export const skills: Skill[] = [
     label: "Languages",
     items: ["English (fluent)", "Hindi (spoken)", "German (beginner to intermediate)", "French (beginner)"],
   },
+  {
+    label: "CAD and design",
+    items: ["NX", "SolidWorks", "CATIA", "Fusion 360", "Creo", "Inventor", "AutoCAD", "Blender"],
+    evidence: "Nozzle design and CAD education on the MJet student team, rover design iteration, procedural 3D modelling in Blender.",
+  },
 ];
 
 export const achievements: Achievement[] = [
-  { label: "Publication", text: "Co-authored two peer-reviewed papers at the International Astronautical Congress.", when: "2023, 2024" },
-  { label: "Competition", text: "1st place of 12 teams in the Hovercraft Design-Build-Fly competition, 200% faster and carrying 150% more payload than the average entry." },
-  { label: "Competition", text: "National champion with the Rampaging Chariots team.", when: "2020" },
-  { label: "Research", text: "One of the three original researchers at Space-FALCON Lab." },
+  { label: "Competition", text: "Gold in the British Mathematical Olympiad, awarded twice." },
   { label: "Academic", text: "Cum Laude, B.S.E. Aerospace Engineering, University of Michigan.", when: "2025" },
   { label: "Academic", text: "Accepted to the MSc in Mathematical Engineering (Quantitative Finance track) at Politecnico di Milano." },
   { label: "Academic", text: "A-Levels: Mathematics A*, Design & Technology A*, Further Mathematics A, Physics A.", when: "2022" },
+  { label: "Competition", text: "Gold in the UK Mathematics Kangaroo." },
+  { label: "Competition", text: "Silver in the British Physics Olympiad.", when: "2022" },
+  { label: "Publication", text: "Co-authored two peer-reviewed papers at the International Astronautical Congress.", when: "2023, 2024" },
+  { label: "Competition", text: "1st place of 12 teams in the Hovercraft Design-Build-Fly competition, 200% faster and carrying 150% more payload than the average entry." },
+  { label: "Research", text: "One of the three original researchers at Space-FALCON Lab." },
+  { label: "Competition", text: "National champion with the Rampaging Chariots team.", when: "2020" },
   { label: "Sport", text: "Won the 2025 league with the Old Merchant Taylors' CC 4th team.", when: "2025" },
 ];
 
