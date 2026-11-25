@@ -195,11 +195,6 @@ export const skills: Skill[] = [
     evidence: "Custom solver development and validation at IdeaForge, atmosphere modelling at Conex Research, thermal and drop testing on the CubeSat.",
   },
   {
-    label: "CAD and design",
-    items: ["NX", "SolidWorks", "CATIA", "Fusion 360", "Creo", "Inventor", "AutoCAD", "Blender"],
-    evidence: "Nozzle design and CAD education on the MJet student team, rover design iteration, procedural 3D modelling in Blender.",
-  },
-  {
     label: "Finance",
     items: ["Mathematical finance", "Derivatives and risk", "CFA Level I candidate"],
     evidence: "Mathematical Finance coursework at Michigan, trading-floor exposure at J.P. Morgan, quantitative finance at Politecnico di Milano from 2027.",
@@ -207,6 +202,11 @@ export const skills: Skill[] = [
   {
     label: "Languages",
     items: ["English (fluent)", "Hindi (spoken)", "German (beginner to intermediate)", "French (beginner)"],
+  },
+  {
+    label: "CAD and design",
+    items: ["NX", "SolidWorks", "CATIA", "Fusion 360", "Creo", "Inventor", "AutoCAD", "Blender"],
+    evidence: "Nozzle design and CAD education on the MJet student team, rover design iteration, procedural 3D modelling in Blender.",
   },
 ];
 
